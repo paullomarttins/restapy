@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row container-fluid">
+    <div class="col justify-content-center">
+        <h3 class="h3 mt-2">Workspaces - Atualizar Grupo do Usuário </h3>
+        <div class="d-flex justify-content-between mb-5 align-items-center">
+            <form action="{% url 'user-grupo-update' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary d-flex align-items-center" title="POST" type="submit">Atualizar</button>
+            </form>
+        </div>
+
+        <!-- <label for="email" class="form-label"> E-mail: </label>
+        <input class="form-control" id="email" type="text" placeholder="nome@exemplo.com">
+
+        <label for="owner" class="form-label"> Perfil: </label>
+        <select class="form-select" id="owner" aria-label="Default select example">
+            <option value="1">Viewer</option>
+            <option value="2">Member</option>
+            <option value="3">Contributor</option>
+            <option value="4">Admin</option>
+        </select> -->
+
+        <!-- <label for="workspace" class="form-label"> Workspace: </label>
+        <form action="{% url 'lista-workspace' %}" method="GET">
+            <select class="form-select" id="workspace" multiple size="10" aria-label="size 10 select example">
+                {% for item in relatorios %}
+                <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-warning mt-2" type="submit">Listar Workspaces</button>
+        </form> -->
+    </div>
+</div>
+   <!--  <ul>
+        {% for item in relatorios %}
+            <li>{{ item.name }} - <a href="{{ item.webUrl }}" target="_blank">Abrir</a></li>
+        {% endfor %}
+    </ul> -->
+
+{% endblock %}
