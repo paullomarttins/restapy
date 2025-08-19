@@ -56,13 +56,9 @@ def adiciona_user_workspace(email, perfil, workspace):
         'principalType': 'User'
     }
 
-    response = requests.post(url, json=params, headers=headers)
-    response.raise_for_status()
-    return response.status_code, response.json()
-
-    # try:
-    #     response = requests.post(url, json=params, headers=headers)
-    #     response.raise_for_status()
-    #     return response.status_code, response.json()
-    # except requests.exceptions.RequestException as e:
-    #     return f'Erro de requisição: {e}'
+    try:
+        response = requests.put(url, json=params, headers=headers)
+        response.raise_for_status()
+        return response.status_code, response.json()
+    except requests.exceptions.RequestException as e:
+        return f'Erro de requisição: {e}'
