@@ -4,6 +4,7 @@
 {% block content %}
 <div class="row container-fluid">
     <div class="col justify-content-center">
+        {% include 'mensagens.html' %}
         <h3 class="h3 mt-2">Workspaces - Atualizar Grupo do Usuário </h3>
         <div class="d-flex justify-content-between mb-5 align-items-center">
             <form action="{% url 'user-grupo-update' %}" method="POST">
