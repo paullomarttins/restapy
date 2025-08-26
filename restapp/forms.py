@@ -1,4 +1,7 @@
 from django import forms
+from contrib.config import lista_workspace
+
+WORKSPACES = lista_workspace()
 
 class GrupoFormUpdate(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'label': 'E-mail', 'placeholder': 'nome@exemplo.com'}))
@@ -11,5 +14,8 @@ class GrupoFormUpdate(forms.Form):
         ],
         widget=forms.Select(attrs={'class': 'form-select', 'label': 'Perfil'})
     )
-    #workspace = forms.CharField(widget=forms.SelectMultiple(attrs={'class': 'form-select'}))
-    workspace = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # workspace = forms.CharField(widget=forms.SelectMultiple(attrs={'class': 'form-select'}))
+    workspace = forms.MultipleChoiceField(
+        choices = WORKSPACES,
+        widget=forms.SelectMultiple(attrs={'class': 'form-select'})
+    )
