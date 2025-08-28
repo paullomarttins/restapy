@@ -30,11 +30,11 @@ def lista_workspace():
     response.raise_for_status()
     relatorios = response.json().get('value', [])
 
-    lista = []
-    for item in relatorios:
-        lista = item['id'], item['name']
+    lista = json.loads(relatorios)
+    for item in lista['name']:
+        listas = print(item['name'])
 
-    return lista
+    return listas
 
 def adiciona_user_workspace(email, perfil, workspace):
     try:
