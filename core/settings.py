@@ -126,7 +126,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Variáveis de configuração da API externa
-CLIENT_ID = config('CLIENT_ID')
-TENANT_ID = config('TENANT_ID')
