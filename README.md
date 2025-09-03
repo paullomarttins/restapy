@@ -4,9 +4,10 @@
 
 ### 1. Crie o arquivo de variáveis de ambiente .env:
 ```
+SECRET_KEY=
 CLIENT_ID=
 TENANT_ID=
-SECRET_KEY=
+CLIENT_SECRET=
 USERNAME=
 PASSWORD=
 ```
