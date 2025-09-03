@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 
-import requests
-from contrib.config import adiciona_user_workspace
+from contrib.config import adiciona_user_workspace, lista_workspace
 from .forms import GrupoFormUpdate
 
 # Token de acesso API
@@ -14,14 +13,18 @@ class GrupoUserUpdate(TemplateView):
     form_class = GrupoFormUpdate
 
 def grupo_update(request):
-    form = GrupoFormUpdate(request.POST)
+    lista_workspace()
+    #instance = GrupoUpdate.objects.all()
+
     if request.method == 'POST':
+        form = GrupoFormUpdate(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
-            perfil = form.cleaned_data['perfil']
-            workspace = form.cleaned_data['workspace']
+            email = request.POST['email']
+            perfil = request.POST['perfil']
+            workspace = request.POST['name']
 
             status_code, response = adiciona_user_workspace(email, perfil, workspace)
+            form.save()
             form = GrupoFormUpdate()
 
             if status_code == 200 or status_code == 201:
