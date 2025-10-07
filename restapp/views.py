@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
 from django.contrib import messages
 
-from contrib.config import adiciona_user_workspace, lista_workspace
+from contrib.config import adiciona_user_workspace, lista_workspace, lista_user_workspace
 from .forms import GrupoFormUpdate
-from .models import ListaWorkspaces
+from .models import ListaWorkspaces, ListaUserWorkspace
 
 class GrupoUserUpdate(TemplateView):
     template_name = 'grupos_user.html'
@@ -39,3 +40,14 @@ def grupo_update(request):
         form = GrupoFormUpdate()
 
     return render(request, 'grupos_user.html', {'form': form})
+
+class ListaWorkspace(ListView):
+    model = ListaWorkspaces
+    paginate_by = 15
+    template_name = 'workspaces_list.html'
+
+class ListaUserWorkspaceView(ListView):
+    # lista_user_workspace()
+    model = ListaUserWorkspace
+    paginate_by = 15
+    template_name = 'usuarios_list.html'
