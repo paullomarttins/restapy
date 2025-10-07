@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Lista Acesso Grupos {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3 class="h3 mt-2"> Lista de usuários e workspaces </h3>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th>Nome Workspace</th>
+                <th>Grupo Acesso</th>
+                <th>Nome Usuário</th>
+                <th>E-mail</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td class="text-center">{{ item.workspace_name }}</td>
+                <td class="text-center">{{ item.groupuseraccess }}</td>
+                <td class="text-center">{{ item.displayname }}</td>
+                <td class="text-center">{{ item.identifier }}</td>
+                <td class="text-center">{{ item.principaltype }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">&laquo; primeiro</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">próxima</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">último &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
