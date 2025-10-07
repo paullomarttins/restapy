@@ -26,3 +26,18 @@ class GrupoUpdate(models.Model):
 
     def __str__(self):
         return self.name
+
+class ListaUserWorkspace(models.Model):
+    id_workspace = models.CharField(max_length=50)
+    workspace_name = models.CharField(max_length=150)
+    groupuseraccess = models.CharField(max_length=50)
+    displayname = models.CharField(max_length=200)
+    identifier = models.CharField(max_length=200)
+    principaltype = models.CharField(max_length=50)
+    emailaddress = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['displayname']
+
+    def __str__(self):
+        return self.displayname
